@@ -1,0 +1,33 @@
+# dune runtest --profile release
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /home/nagle118/.cache/dune/db
+# Workspace root: /home/nagle118/csci2041/repo-nagle118/Hwk_06/warmup
+# Auto-detected concurrency: 8
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Release
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; installed_env =
+#      map
+#        { "INSIDE_DUNE" :
+#            "/home/nagle118/csci2041/repo-nagle118/Hwk_06/warmup/_build/default"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; instrument_with = []
+#  }
+$ /project/ringo025/csci2041-s24/opam3/modern/bin/ocamlc.opt -config > /tmp/dune_597912_output
+$ (cd _build/default && /project/ringo025/csci2041-s24/opam3/modern/bin/ocamlc.opt -w -40 -g -bin-annot -I src/.expr.objs/byte -no-alias-deps -o src/.expr.objs/byte/expr.cmo -c -impl src/expr.ml)
+$ (cd _build/default && /project/ringo025/csci2041-s24/opam3/modern/bin/ocamlc.opt -w -40 -g -bin-annot -I tests/.tests.objs/byte -I src/.expr.objs/byte -no-alias-deps -o tests/.tests.objs/byte/tests.cmo -c -impl tests/tests.ml)
+$ (cd _build/default && /project/ringo025/csci2041-s24/opam3/modern/bin/ocamlopt.opt -w -40 -g -I src/.expr.objs/byte -I src/.expr.objs/native -intf-suffix .ml -no-alias-deps -o src/.expr.objs/native/expr.cmx -c -impl src/expr.ml)
+$ (cd _build/default && /project/ringo025/csci2041-s24/opam3/modern/bin/ocamlc.opt -w -40 -g -bin-annot -I runtest/.runtest.eobjs/byte -I src/.expr.objs/byte -I tests/.tests.objs/byte -no-alias-deps -o runtest/.runtest.eobjs/byte/dune__exe__Runtest.cmo -c -impl runtest/runtest.ml)
+$ (cd _build/default && /project/ringo025/csci2041-s24/opam3/modern/bin/ocamlopt.opt -w -40 -g -I tests/.tests.objs/byte -I tests/.tests.objs/native -I src/.expr.objs/byte -I src/.expr.objs/native -intf-suffix .ml -no-alias-deps -o tests/.tests.objs/native/tests.cmx -c -impl tests/tests.ml)
+$ (cd _build/default && /project/ringo025/csci2041-s24/opam3/modern/bin/ocamlopt.opt -w -40 -g -a -o src/expr.cmxa src/.expr.objs/native/expr.cmx)
+$ (cd _build/default && /project/ringo025/csci2041-s24/opam3/modern/bin/ocamlopt.opt -w -40 -g -I runtest/.runtest.eobjs/byte -I runtest/.runtest.eobjs/native -I src/.expr.objs/byte -I src/.expr.objs/native -I tests/.tests.objs/byte -I tests/.tests.objs/native -intf-suffix .ml -no-alias-deps -o runtest/.runtest.eobjs/native/dune__exe__Runtest.cmx -c -impl runtest/runtest.ml)
+$ (cd _build/default && /project/ringo025/csci2041-s24/opam3/modern/bin/ocamlopt.opt -w -40 -g -a -o tests/tests.cmxa tests/.tests.objs/native/tests.cmx)
+$ (cd _build/default && /project/ringo025/csci2041-s24/opam3/modern/bin/ocamlopt.opt -w -40 -g -o runtest/runtest.exe src/expr.cmxa tests/tests.cmxa runtest/.runtest.eobjs/native/dune__exe__Runtest.cmx)
+$ (cd _build/default/runtest && ./runtest.exe)
